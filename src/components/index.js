@@ -6,4 +6,5 @@ export { default as Description } from './description';
 export { default as Temperature } from './temperature';
 export { default as Wind } from './wind';
 export { default as Atmosphere } from './atmosphere';
+export { default as Weather } from './weather';
 export { default as Forecast } from './forecast';
