@@ -6,9 +6,6 @@ export default ({ description }) => {
   const Icon = Icons[description];
 
   return (
-    <div>
-      <Icon className='icon' label={description} />
-      <span className='description'>{description}</span>
-    </div>
+    <Icon className='icon' label={description} />
   );
 };

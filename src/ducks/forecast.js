@@ -1,52 +1,38 @@
 import _ from 'lodash';
 import moment from 'moment';
+import axios from 'axios';
+
+export const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast';
+export const APP_ID = '1b9a4cf6f5eecebb884e5b6e7144cb98';
 
 export const TOGGLE = 'TOGGLE';
+export const FETCH = 'FETCH';
+export const SUCCESS = 'SUCCESS';
+export const FAILED = 'FAILED';
 
 const DAYS = 5;
-
-const forecasts = [ 
-  { 
-    key: 1
-  , date: new Date(2016, 7, 8, 0, 0, 0)
-  , description: 'Rain'
-  , maximumTemperature: 20 
-  , minimumTemperature: 10 
-  , windSpeed: 20
-  , windDirection: 359
-  , rainfall: 0
-  , pressure: 1000 
-  } 
-, { 
-    key: 2
-  , date: new Date(2016, 7, 8, 3, 0, 0)
-  , description: 'Rain'
-  , maximumTemperature: 20 
-  , minimumTemperature: 10 
-  , windSpeed: 20
-  , windDirection: 359
-  , rainfall: 0
-  , pressure: 1000 
-  } 
-, { 
-    key: 3
-  , date: new Date(2016, 7, 8, 6, 0, 0)
-  , description: 'Rain'
-  , maximumTemperature: 20 
-  , minimumTemperature: 10 
-  , windSpeed: 20
-  , windDirection: 359
-  , rainfall: 0
-  , pressure: 1000 
-  } 
-];
 
 export const initialState = {
   dates: _.range(DAYS).map(day => ({
     date: moment().add(day, 'day')
   , active: false
   }))
-, forecasts
+, forecasts: []
+, fetching: false
+};
+
+export const mapForecast = (forecast, index) => {
+  return { 
+    key: index
+  , date: moment.unix(forecast.dt).utc().toDate()
+  , description: forecast.weather[0].main
+  , maximumTemperature: forecast.main.temp_max 
+  , minimumTemperature: forecast.main.temp_min 
+  , windSpeed: forecast.wind.speed
+  , windDirection: forecast.wind.deg
+  , rainfall: forecast.rain['3h'] || 0
+  , pressure: forecast.main.pressure 
+  };
 };
 
 export default (state = initialState, action) => {
@@ -58,6 +44,16 @@ export default (state = initialState, action) => {
     });
 
     return _.assign({}, state, { dates });
+
+    case FETCH:
+      return _.assign({}, state, { fetching: true });
+
+    case SUCCESS: 
+      return _.assign({}, state, { fetching: false, forecasts: action.payload.forecasts.map(mapForecast) });
+
+    case FAILED: 
+      return _.assign({}, state, { fetching: false, error: action.payload.error });
+
     default:
     return state;
   }
@@ -81,7 +77,23 @@ export const dateSelector = (state, props) => {
   });
 };
 
-export const toggle = (date) => {
+export const toggle = date => {
   return { type: TOGGLE, payload: { date }};
+};
+
+export const fetch = city => {
+  const url = `${BASE_URL}?q=${city},uk&units=metric&appid=${APP_ID}`;
+  
+  return dispatch => {
+    dispatch({ type: FETCH });
+
+    return axios.get(url)
+    .then(response => {
+      dispatch({ type: SUCCESS, payload: { forecasts: response.data.list }});
+    })
+    .catch(error => {
+      dispatch({ type: FAILED, error });
+    });
+  };
 };
 

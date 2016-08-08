@@ -7,3 +7,6 @@ export { default as Shower } from './shower';
 export { default as Snow } from './snow';
 export { default as Sun } from './sun';
 export { default as Thunder } from './thunder';
+
+export { default as Clear } from './sun';
+export { default as Clouds } from './cloud';
