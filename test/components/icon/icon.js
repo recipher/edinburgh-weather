@@ -297,4 +297,14 @@ describe('Icon decorator', () => {
     });
 
   });
+
+  describe('when setting label', () => {
+    let result;
+
+    before(() => result = setup(createIcon(), { label: 'Label' }));
+
+    it('should set aria-label', () => {
+      expect(result.props['aria-label']).to.equal('Label');
+    });
+  });
 });

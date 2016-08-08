@@ -7,7 +7,7 @@ export default ({ description }) => {
 
   return (
     <div>
-      <Icon className='icon' />
+      <Icon className='icon' label={description} />
       <span className='description'>{description}</span>
     </div>
   );

@@ -13,7 +13,7 @@ export const determineViewBox = function(viewBox = [ DEFAULT_SIZE, DEFAULT_SIZE 
 
 export default function(props = {}) {
   const { viewBox
-        , label
+        , defaultLabel
         , defaultColour = DEFAULT_COLOUR
         , defaultSize = DEFAULT_SIZE 
         , defaultWidth
@@ -25,6 +25,7 @@ export default function(props = {}) {
     // eslint-disable-next-line
     return Radium(props => {
       const { style
+            , label = defaultLabel
             , size = defaultSize
             , width = defaultWidth
             , height = defaultHeight
