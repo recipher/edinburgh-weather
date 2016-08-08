@@ -4,6 +4,10 @@
 
 An up-to-date node and npm installation.
 
+### Technology
+
+Client-side application, build with Javascript, HTML and CSS, utilising React.js for view rendering, Redux for state management, Radium for CSS and create-react-app for build and run (and Webpack and Babel under the covers). Express.js is used for the server, specifically to allow the site to run on Heroku. Testing is entirely server-side, using Mocha and Enzyme.
+
 ### Build
 
 ```
