@@ -1,14 +1,20 @@
 import React from 'react';
 import { Arrow } from './icon';
+import Cell from './cell';
 
 export default ({ speed, direction, units = 'kph' }) => {
+  const styles = {
+    direction: {
+      display: 'block'
+    }
+  };
 
   return (
-    <div>
+    <Cell>
       <span className='speed'>{speed}{units}</span>
-      <span className='direction'>
-        <Arrow size={16} style={{transform: `rotate(${Math.round(direction)}deg)`}} />
+      <span className='direction' style={styles.direction}>
+        <Arrow size={16} style={{transform: `rotate(${direction}deg)`}} />
       </span>
-    </div>
+    </Cell>
   );
 };

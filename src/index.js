@@ -6,6 +6,8 @@ import { fetch } from './ducks/forecast';
 import App from './app';
 import createStore from './store';
 
+const CITY = 'Edinburgh';
+
 const store = createStore()
     , root = document.getElementById('root');
     
@@ -15,4 +17,4 @@ ReactDOM.render(
   </Provider>
 , root);
 
-store.dispatch(fetch('Peebles'));
+store.dispatch(fetch(CITY));

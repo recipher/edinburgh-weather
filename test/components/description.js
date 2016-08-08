@@ -25,9 +25,4 @@ describe('Description component', () => {
     expect(icon.children('.rain')).to.exist;
   });
 
-  it('displays the description correctly', () => {
-    const { description } = setup('Rain');
-    expect(description.text()).to.contain('Rain');
-  });
-
 });

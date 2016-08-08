@@ -8,6 +8,7 @@ export default Radium(({ forecast, active }) => {
   const styles = {
     base: {
       maxHeight: 0
+    , clear: 'both'
     , overflow: 'hidden'
     , transition: 'all 0.5s ease-in-out'
     }

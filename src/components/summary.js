@@ -8,6 +8,7 @@ export default Radium(({ forecast, onClick }) => {
   const styles = {
     base: {
       fontSize: '1.5em'
+    , clear: 'both'
     , ':hover': {
         cursor: 'pointer'
       }

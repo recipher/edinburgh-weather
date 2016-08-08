@@ -1,11 +1,12 @@
 import React from 'react';
 import moment from 'moment';
+import Cell from './cell';
 
 export default ({ date }) => {
 
   return (
-    <div>
+    <Cell align='left'>
       <span className='hour'>{moment(date).format('HHmm')}</span>
-    </div>
+    </Cell>
   );
 };
