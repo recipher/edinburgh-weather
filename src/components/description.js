@@ -6,8 +6,8 @@ export default ({ description }) => {
   const Icon = Icons[description];
 
   return (
-    <Cell>
-      <Icon className='icon' label={description} />
+    <Cell width={15} align='center'>
+      <Icon className='icon' label={description} size={32} />
     </Cell>
   );
 };

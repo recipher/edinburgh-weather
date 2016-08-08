@@ -1,17 +1,25 @@
 import React from 'react';
+import Radium from 'radium';
 import Cell from './cell';
 
-export default ({ rainfall, pressure }) => {
+// eslint-disable-next-line
+export default Radium(({ rainfall, pressure }) => {
   const styles = {
     pressure: {
-      fontSize: '0.8em'
+      display: 'inline-block'
+    , paddingLeft: 10
+    , fontSize: '0.8em'
+    , fontWeight: 300
     , color: '#999'
-    , display: 'block'
+    , '@media (max-width: 639px)': {
+        display: 'block'
+      , paddingLeft: 0
+      }
     }
   };
 
   return (
-    <Cell>
+    <Cell width={35}>
       <span className='rainfall'>
         {rainfall}mm
       </span>
@@ -20,4 +28,4 @@ export default ({ rainfall, pressure }) => {
       </span>
     </Cell>
   );
-};
+});

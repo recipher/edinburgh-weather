@@ -6,9 +6,9 @@ export default Radium(({ children, width, align, style }) => {
 
   const styles = {
     base: {
-      width: width || '20%'
+      width: (width || 20) + '%'
     , float: 'left'
-    , textAlign: align || 'center'
+    , textAlign: align || 'left'
     }
   };
 

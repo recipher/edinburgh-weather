@@ -7,12 +7,20 @@ import Cell from './cell';
 export default Radium(({ date }) => {
   const styles = {
     date: {
-      display: 'block'
+      display: 'inline-block'
+    , paddingLeft: 5
+    , fontSize: '0.9em'
+    , fontWeight: 300
+    , color: '#999'
+    , '@media (max-width: 639px)': {
+        display: 'block'
+      , paddingLeft: 0
+      }
     }
   };
 
   return (
-    <Cell align='left'>
+    <Cell align='left' width={15}>
       <span className='name'>
         {moment(date).format('ddd')}
       </span>

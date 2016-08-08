@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
@@ -14,6 +15,9 @@ describe('Atmosphere component', () => {
     , pressure: component.find('.pressure') 
     };
   };
+
+  before(() => Radium.TestMode.enable());
+  after(() => Radium.TestMode.disable());
 
   it('displays the rainfall correctly', () => {
     const { rainfall } = setup(0, 1000);

@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
@@ -14,6 +15,9 @@ describe('Day component', () => {
     , date: component.find('.date') 
     };
   };
+
+  before(() => Radium.TestMode.enable());
+  after(() => Radium.TestMode.disable());
 
   it('displays the day name correctly', () => {
     const { name } = setup(new Date(2016, 6, 8));

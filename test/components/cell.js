@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Cell from '../../src/components/cell';
 
-describe.only('Cell component', () => {
+describe('Cell component', () => {
 
   const setup = props => {
     const component = shallow(<Cell {...props}><div /></Cell>);
@@ -24,18 +24,18 @@ describe.only('Cell component', () => {
     const { style } = setup();
     expect(style).to.deep.equal({
       float: 'left'
-    , textAlign: 'center'
+    , textAlign: 'left'
     , width: '20%'
     });
   });
 
   it('overrides alignment correctly', () => {
-    const { style } = setup({ align: 'left' });
-    expect(style.textAlign).to.equal('left');
+    const { style } = setup({ align: 'center' });
+    expect(style.textAlign).to.equal('center');
   });
 
   it('overrides width correctly', () => {
-    const { style } = setup({ width: '30%' });
+    const { style } = setup({ width: 30 });
     expect(style.width).to.equal('30%');
   });
 
@@ -43,7 +43,7 @@ describe.only('Cell component', () => {
     const { style } = setup({ style: {width: '30%', color: 'red'} });
     expect(style).to.deep.equal({
       float: 'left'
-    , textAlign: 'center'
+    , textAlign: 'left'
     , width: '30%'
     , color: 'red'
     });

@@ -19,11 +19,11 @@ export default Radium(({ forecast, active }) => {
 
   return (
     <div className='detail' style={[ styles.base, active && styles.active ]}>
-      <Hour date={forecast.date} />
-      <Description description={forecast.description} />
+      <Hour date={forecast.date} width={15} />
+      <Description description={forecast.description} width={15} />
       <Temperature maximum={forecast.maximumTemperature} minimum={forecast.minimumTemperature} />
       <Wind speed={forecast.windSpeed} direction={forecast.windDirection} />
-      <Atmosphere rainfall={forecast.rainfall} pressure={forecast.pressure} />
+      <Atmosphere rainfall={forecast.rainfall} pressure={forecast.pressure} width={30} />
     </div>
   );
 });

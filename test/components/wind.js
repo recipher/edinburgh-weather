@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
@@ -15,6 +16,9 @@ describe('Wind component', () => {
     , direction: component.find('.direction') 
     };
   };
+
+  before(() => Radium.TestMode.enable());
+  after(() => Radium.TestMode.disable());
 
   it('displays the speed correctly', () => {
     const { speed } = setup(25, 0, 'kph');
