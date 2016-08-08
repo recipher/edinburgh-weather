@@ -10,9 +10,20 @@ describe('Description component', () => {
     const component = shallow(<Description description={description} />);
     return { 
       component
+    , icon: component.find('.icon')
     , description: component.find('.description') 
     };
   };
+
+  it('displays the icon', () => {
+    const { icon } = setup('Rain');
+    expect(icon).to.exist;
+  });
+
+  it.skip('displays the correct icon', () => {
+    const { icon } = setup('Rain');
+    expect(icon.children('.rain')).to.exist;
+  });
 
   it('displays the description correctly', () => {
     const { description } = setup('Rain');
