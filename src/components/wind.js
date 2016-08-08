@@ -18,3 +18,4 @@ export default ({ speed, direction, units = 'kph' }) => {
     </Cell>
   );
 };
+

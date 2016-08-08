@@ -13,7 +13,7 @@ export default Radium(({ children, width, align, style }) => {
   };
 
   return (
-    <span style={[ styles.base, style ]}>
+    <span className='cell' style={[ styles.base, style ]}>
       {children}
     </span>
   );
