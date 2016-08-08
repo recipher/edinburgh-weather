@@ -5,7 +5,7 @@ import * as Icons from '../../../src/components/icon';
 
 const TYPES = [ 'Cloud', 'Mist', 'Moon', 'Rain', 'Shower', 'Snow', 'Sun', 'Thunder' ];
 
-describe('Icon components', () => {
+describe('Weather icon components', () => {
 
   const setup = (type) => {
     const Icon = Icons[type]
@@ -24,8 +24,4 @@ describe('Icon components', () => {
     });
   });
 
-  it('renders the arrow icon', () => {
-    const result = setup('Arrow');
-    expect(result.path.type()).to.equal('g');
-  });
 });
