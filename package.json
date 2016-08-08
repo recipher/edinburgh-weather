@@ -1,6 +1,6 @@
 {
   "name": "@recipher/weather",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "babel-core": "^6.11.4",
