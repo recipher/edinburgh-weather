@@ -1,3 +1,4 @@
+export { default as Arrow } from './arrow';
 export { default as Cloud } from './cloud';
 export { default as Mist } from './mist';
 export { default as Moon } from './moon';
