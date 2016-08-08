@@ -1,10 +1,8 @@
 import React from 'react';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Temperature from '../../src/components/temperature';
 
-chai.use(chaiEnzyme());
+import Temperature from '../../src/components/temperature';
 
 describe('Temperature component', () => {
 

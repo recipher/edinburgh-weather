@@ -1,10 +1,8 @@
 import React from 'react';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Wind from '../../src/components/wind';
 
-chai.use(chaiEnzyme());
+import Wind from '../../src/components/wind';
 
 describe('Wind component', () => {
 

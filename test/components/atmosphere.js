@@ -1,10 +1,8 @@
 import React from 'react';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Atmosphere from '../../src/components/atmosphere';
 
-chai.use(chaiEnzyme());
+import Atmosphere from '../../src/components/atmosphere';
 
 describe('Atmosphere component', () => {
 

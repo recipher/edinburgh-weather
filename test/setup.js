@@ -1,6 +1,10 @@
-var jsdom = require('jsdom').jsdom;
+import chai from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+import { jsdom } from 'jsdom';
 
-var exposedProperties = [ 'window', 'navigator', 'document' ];
+chai.use(chaiEnzyme());
+
+const exposedProperties = [ 'window', 'navigator', 'document' ];
 
 global.document = jsdom('');
 global.window = document.defaultView;

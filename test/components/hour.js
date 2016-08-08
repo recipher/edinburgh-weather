@@ -1,10 +1,8 @@
 import React from 'react';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Hour from '../../src/components/hour';
 
-chai.use(chaiEnzyme());
+import Hour from '../../src/components/hour';
 
 describe('Hour component', () => {
 
