@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { fetch } from './ducks/forecast';
 
-import App from './app';
+import Weather from './components/weather';
 import createStore from './store';
 
 const CITY = 'Edinburgh';
@@ -13,7 +13,7 @@ const store = createStore()
     
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Weather />
   </Provider>
 , root);
 

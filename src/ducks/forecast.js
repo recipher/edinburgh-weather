@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
+import { createSelector } from 'reselect';
 import axios from 'axios';
 
 export const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast';
@@ -61,23 +62,42 @@ export default (state = initialState, action) => {
   }
 };
 
-export const summarySelector = (state, props) => {
-  return _.find(state.forecast.forecasts, forecast => {
-    return moment(forecast.date).isSame(props.date.date, 'day');
-  });
-};
+const selectedDateSelector = (state, props) => props.date.date;
+const datesSelector = (state, props) => state.forecast.dates;
+const forecastsSelector = (state, props) => state.forecast.forecasts;
 
-export const detailSelector = (state, props) => {
-  return _.filter(state.forecast.forecasts, forecast => {
-    return moment(forecast.date).isSame(props.date.date, 'day');
+export const detailSelector = createSelector(
+  [ selectedDateSelector, forecastsSelector ], (selectedDate, forecasts) => {
+  return _.filter(forecasts, forecast => {
+    return moment(forecast.date).isSame(selectedDate, 'day');
   });
-};
+});
 
-export const dateSelector = (state, props) => {
-  return _.find(state.forecast.dates, date => {
-    return moment(date.date).isSame(props.date.date, 'day');
+export const summarySelector = createSelector(
+  [ selectedDateSelector, detailSelector, forecastsSelector ], (selectedDate, details, forecasts) => {
+
+  if (forecasts.length === 0) return;
+
+  const detail = _.first(details);
+
+  return { 
+    date: selectedDate
+  , description: detail.description
+  , maximumTemperature: _.map(details, 'maximumTemperature').reduce((curr, prev) => Math.max(curr, prev))
+  , minimumTemperature: _.map(details, 'minimumTemperature').reduce((curr, prev) => Math.min(curr, prev))
+  , windSpeed: detail.windSpeed
+  , windDirection: detail.windDirection
+  , rainfall: _.map(details, 'rainfall').reduce((curr, prev) => curr + prev)
+  , pressure: detail.pressure
+  };
+});
+
+export const dateSelector = createSelector(
+  [ selectedDateSelector, datesSelector ], (selectedDate, dates) => {
+  return _.find(dates, date => {
+    return moment(date.date).isSame(selectedDate, 'day');
   });
-};
+});
 
 export const toggle = date => {
   return { type: TOGGLE, payload: { date }};

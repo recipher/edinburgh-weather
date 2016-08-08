@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Forecast } from './';
 
-export default ({ forecast }) => {
+export const Weather = ({ forecast }) => {
   return (
     <div style={{width:'100%'}}>
       <h1>Five Day Weather Forecast for {forecast.city}</h1>
@@ -9,3 +10,5 @@ export default ({ forecast }) => {
     </div>
   );
 };
+
+export default connect(state => ({ forecast: state.forecast }))(Weather);

@@ -1,25 +1,24 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 
-import App from '../src/app';
+import Weather from '../../src/components/weather';
 
-const mockStore = configureStore([ thunk ]);
+const mockStore = configureStore();
 
-describe('App component', () => {
+describe('Weather component', () => {
 
   const setup = () => {
     return mount(
       <Provider store={mockStore({ forecast: { dates: [], forecasts: [] }})}>
-        <App />
+        <Weather />
       </Provider>
     );
   };
 
-  it('mounts the app', () => {
+  it('mounts the weather component', () => {
     expect(setup());
   });
 });
