@@ -42,8 +42,9 @@ npm test
 
 ### To Do
 
-There are 3 main areas to consider:
+There are 4 main areas to improve:
 
-1. Improved testing - a full integration testing suite, using webdriver.io and cucumber or yadda. In addition, add code coverage and improve unit testing. The components are reasonably well tested, but I ran out of time to TDD a fair amount of the redux code.
+1. Improved testing - a full acceptance testing suite, using webdriver.io and cucumber or yadda. In addition, add code coverage and improve unit testing. The components are reasonably well tested, but I ran out of time to TDD a fair amount of the redux code. In addition, acceptance tests would be useful to ensure that the app matches expectations - for example, what should the rules for summarising the daily weather be?
 2. Improve the UX. At the moment, it is very basic. For example, to show the hour breakdown for each day, you need to click the day row, but there is little indication that that is possible. It's also very monochrome.
 3. Add new functionality, such as allowing the user to select the location, and change the units from metric to imperial, or refresh the data on a timer, rather than forcing the user to press refresh.
+4. Fix any bugs (e.g. take into account daylight savings).
