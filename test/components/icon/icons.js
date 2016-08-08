@@ -17,10 +17,15 @@ describe('Icon components', () => {
     };
   };
 
-  it('Renders the icons', () => {
+  it('renders the weather icons', () => {
     TYPES.forEach(type => {
       const result = setup(type);
       expect(result.path.type()).to.equal('path');
     });
+  });
+
+  it('renders the arrow icon', () => {
+    const result = setup('Arrow');
+    expect(result.path.type()).to.equal('g');
   });
 });
