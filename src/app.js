@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Summary, Hour, Description, Temperature, Wind, Atmosphere } from './components';
+import { Summary, Detail } from './components';
 
 class App extends Component {
   render() {
@@ -17,13 +17,7 @@ class App extends Component {
     return (
       <div>
         <Summary forecast={forecast} />
-        <div>
-          <Hour date={new Date()} />
-          <Description description='Rain' />
-          <Temperature maximum={20} minimum={10} />
-          <Wind speed={20} direction={360} />
-          <Atmosphere rainfall={0} pressure={1000} />
-        </div>
+        <Detail forecast={forecast} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 export { default as Summary } from './summary';
+export { default as Detail } from './detail';
 export { default as Day } from './day';
 export { default as Hour } from './hour';
 export { default as Description } from './description';

@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import Summary from '../../src/components/summary';
+import { Day, Description, Temperature, Wind, Atmosphere } from '../../src/components';
 
 describe('Summary component', () => {
 
@@ -14,7 +15,7 @@ describe('Summary component', () => {
     };
   };
 
-  it('displays the summary', () => {
+  it('displays the summary correctly', () => {
     const { summary } = setup({ 
       date: new Date(2016, 10, 10)
     , description: 'Rain'
@@ -26,7 +27,12 @@ describe('Summary component', () => {
     , pressure: 1000 
     });
 
-    expect(summary);
+    expect(summary).to.exist;
+    expect(summary).to.have.descendants(Day);
+    expect(summary).to.have.descendants(Description);
+    expect(summary).to.have.descendants(Temperature);
+    expect(summary).to.have.descendants(Wind);
+    expect(summary).to.have.descendants(Atmosphere);
   });
 
 });
