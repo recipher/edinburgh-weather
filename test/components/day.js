@@ -1,5 +1,5 @@
 import React from 'react';
-import chai, { assert } from 'chai';
+import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { shallow } from 'enzyme';
 import Day from '../../src/components/day';
@@ -19,12 +19,12 @@ describe('Day component', () => {
 
   it('displays the day name correctly', () => {
     const { name } = setup(new Date(2016, 6, 8));
-    assert.equal(name.text(), 'Fri');
+    expect(name.text()).to.equal('Fri');
   });
 
   it('displays the day date correctly', () => {
     const { date } = setup(new Date(2016, 6, 8));
-    assert.equal(date.text(), '8');
+    expect(date.text()).to.equal('8');
   });
 
 });
