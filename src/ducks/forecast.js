@@ -11,13 +11,8 @@ export const FETCH = 'FETCH';
 export const SUCCESS = 'SUCCESS';
 export const FAILED = 'FAILED';
 
-const DAYS = 5;
-
 export const initialState = {
-  dates: _.range(DAYS).map(day => ({
-    date: moment().add(day, 'day')
-  , active: false
-  }))
+  dates: []
 , forecasts: []
 , fetching: false
 , error: false
@@ -38,6 +33,12 @@ export const mapForecast = (forecast, index) => {
   };
 };
 
+export const getDates = (forecasts) => {
+  return _
+  .uniqBy(forecasts, forecast => moment.unix(forecast.dt).day())
+  .map(forecast => ({ date: moment.unix(forecast.dt), active: false }));
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE: 
@@ -52,7 +53,9 @@ export default (state = initialState, action) => {
       return _.assign({}, state, { fetching: true, city: action.payload.city });
 
     case SUCCESS: 
-      return _.assign({}, state, { fetching: false, forecasts: action.payload.forecasts.map(mapForecast) });
+      return _.assign({}, state, { fetching: false
+                                 , dates: getDates(action.payload.forecasts)
+                                 , forecasts: action.payload.forecasts.map(mapForecast) });
 
     case FAILED: 
       return _.assign({}, state, { fetching: false, error: true });
@@ -79,6 +82,8 @@ export const summarySelector = createSelector(
   if (forecasts.length === 0) return;
 
   const detail = _.first(details);
+
+  if (detail == null) return;
 
   return { 
     date: selectedDate
