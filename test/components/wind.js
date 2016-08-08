@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import Wind from '../../src/components/wind';
+import { Arrow } from '../../src/components/icon';
 
 describe('Wind component', () => {
 
@@ -16,23 +17,23 @@ describe('Wind component', () => {
   };
 
   it('displays the speed correctly', () => {
-    const { speed } = setup(25, 360, 'kph');
-    expect(speed.text()).to.equal('25 kph');
+    const { speed } = setup(25, 0, 'kph');
+    expect(speed.text()).to.equal('25kph');
   });
 
   it('displays the speed correctly when no units are specified', () => {
-    const { speed } = setup(25, 360);
-    expect(speed.text()).to.equal('25 kph');
+    const { speed } = setup(25, 0);
+    expect(speed.text()).to.equal('25kph');
   });
 
   it('displays the speed correctly when alternate units are specified', () => {
-    const { speed } = setup(30, 360, 'mph');
-    expect(speed.text()).to.equal('30 mph');
+    const { speed } = setup(30, 0, 'mph');
+    expect(speed.text()).to.equal('30mph');
   });
 
-  it('displays the direction correctly', () => {
-    const { direction } = setup(25, 360);
-    expect(direction.text()).to.equal('360');
+  it('displays the direction arrow', () => {
+    const { component } = setup(25, 0);
+    expect(component).to.have.descendants(Arrow);
   });
 
 });
