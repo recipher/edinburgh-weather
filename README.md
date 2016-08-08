@@ -1,5 +1,9 @@
 ## 5 Day Weather Forecast
 
+### Prerequisites
+
+An up-to-date node and npm installation.
+
 ### Build
 
 ```
