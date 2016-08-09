@@ -3,6 +3,8 @@ import moment from 'moment';
 import { createSelector } from 'reselect';
 import axios from 'axios';
 
+const LIMIT = 5;
+
 export const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast';
 export const APP_ID = '1b9a4cf6f5eecebb884e5b6e7144cb98';
 
@@ -35,8 +37,11 @@ export const mapForecast = (forecast, index) => {
 
 export const getDates = (forecasts) => {
   return _
-  .uniqBy(forecasts, forecast => moment.unix(forecast.dt).day())
-  .map(forecast => ({ date: moment.unix(forecast.dt), active: false }));
+  .chain(forecasts)
+  .uniqBy(forecast => moment.unix(forecast.dt).day())
+  .map(forecast => ({ date: moment.unix(forecast.dt), active: false }))
+  .take(LIMIT)
+  .value();
 };
 
 export default (state = initialState, action) => {
