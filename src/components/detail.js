@@ -1,7 +1,7 @@
 import React from 'react';
 import { Hour, Description, Temperature, Wind, Atmosphere } from './';
 
-export default ({ forecast, active }) => {
+export default ({ forecast }) => {
 
   const styles = {
     base: {
