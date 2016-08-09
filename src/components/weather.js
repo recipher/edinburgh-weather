@@ -19,9 +19,9 @@ export const Weather = ({ forecast }) => {
   return (
     <StyleRoot style={styles.base}>
       <h1>Five Day Weather Forecast for {forecast.city}</h1>
+      {forecast.dates.map(date => <Forecast key={date.date} date={date} />)}
       {forecast.fetching && <div style={styles.message}>Checking the skies...</div>}
       {forecast.error && <div style={styles.message}>Error retrieving the forecast</div>}
-      {forecast.dates.map(date => <Forecast key={date.date} date={date} />)}
     </StyleRoot>
   );
 };
