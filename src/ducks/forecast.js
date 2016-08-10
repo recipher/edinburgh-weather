@@ -30,7 +30,7 @@ export const mapForecast = (forecast, index) => {
   , minimumTemperature: Math.floor(forecast.main.temp_min)
   , windSpeed: Math.floor(forecast.wind.speed)
   , windDirection: Math.floor(forecast.wind.deg)
-  , rainfall: Math.ceil(forecast.rain['3h'] || 0)
+  , rainfall: Math.ceil((forecast.rain && forecast.rain['3h']) || 0)
   , pressure: Math.floor(forecast.main.pressure)
   };
 };
